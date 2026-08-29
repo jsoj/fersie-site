@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <rect width="600" height="600" fill="#faf8f5"/>
+  <circle cx="300" cy="300" r="180" fill="none" stroke="hsl(43, 74%, 49%)" stroke-width="4"/>
+  <circle cx="300" cy="300" r="120" fill="none" stroke="hsl(43, 74%, 75%)" stroke-width="2"/>
+  <polygon points="300,160 340,260 440,260 360,320 390,420 300,360 210,420 240,320 160,260 260,260" fill="hsl(43, 74%, 49%)"/>
+  <text x="300" y="530" font-family="'Playfair Display', serif" font-size="26" font-weight="bold" fill="hsl(0, 0%, 10%)" text-anchor="middle">FERSIE — Bijuterias Finas</text>
+</svg>

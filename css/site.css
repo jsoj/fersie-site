@@ -1,0 +1,555 @@
+/* Custom site stylesheet extending Fersie Design System */
+
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fdfdfd;
+  color: var(--fersie-neutral-800, #2d3748);
+  font-family: var(--fersie-font-sans, 'Inter', sans-serif);
+}
+
+.fersie-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Header & Navigation */
+.fersie-site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--fersie-neutral-300, #e5e5e5);
+  padding: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.fersie-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.fersie-logo {
+  text-decoration: none;
+  font-family: var(--fersie-font-serif, 'Playfair Display', serif);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--fersie-tailoring-charcoal, #1a202c);
+  font-size: 1.75rem;
+}
+
+.fersie-nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fersie-nav-links a {
+  text-decoration: none;
+  color: var(--fersie-tailoring-charcoal, #2d3748);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.fersie-nav-links a:hover,
+.fersie-nav-links a.active {
+  color: var(--fersie-gold, #c5a059);
+}
+
+.fersie-nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--fersie-gold, #c5a059);
+  border-radius: 2px;
+}
+
+.fersie-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Mobile Menu Toggle Button */
+.fersie-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+}
+
+.fersie-menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--fersie-tailoring-charcoal, #1a202c);
+  transition: all 0.3s ease;
+}
+
+/* Mobile Navigation Drawer */
+.fersie-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1100;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.fersie-drawer.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.fersie-drawer-overlay {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.fersie-drawer-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  max-width: 85vw;
+  background-color: #ffffff;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.fersie-drawer.open .fersie-drawer-content {
+  transform: translateX(0);
+}
+
+.fersie-drawer-close {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--fersie-neutral-600, #718096);
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.fersie-drawer ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.fersie-drawer ul a {
+  text-decoration: none;
+  color: var(--fersie-tailoring-charcoal, #1a202c);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Hero Section */
+.fersie-hero {
+  padding: 5rem 0;
+  text-align: center;
+  background: linear-gradient(135deg, #f7f5f0 0%, #f1ece1 100%);
+  border-bottom: 1px solid var(--fersie-neutral-300, #e2e8f0);
+}
+
+.fersie-hero-badge {
+  display: inline-block;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--fersie-gold, #c5a059);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.fersie-hero h1 {
+  font-size: 2.75rem;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  color: var(--fersie-tailoring-charcoal, #1a202c);
+  line-height: 1.2;
+}
+
+.fersie-hero p {
+  max-width: 680px;
+  margin: 0 auto 2.25rem auto;
+  font-size: 1.15rem;
+  color: var(--fersie-neutral-700, #4a5568);
+  line-height: 1.7;
+}
+
+.fersie-hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Section Common */
+.fersie-section {
+  padding: 4.5rem 0;
+}
+
+.fersie-section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+}
+
+.fersie-section-header h2 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 2.25rem;
+}
+
+.fersie-section-header p {
+  color: var(--fersie-neutral-600, #718096);
+  font-size: 1.05rem;
+}
+
+/* Brand Story / Values Section */
+.fersie-about-section {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--fersie-neutral-200, #edf2f7);
+}
+
+.fersie-values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.fersie-value-card {
+  background-color: var(--fersie-tailoring-cream, #faf8f5);
+  border: 1px solid var(--fersie-neutral-300, #e2e8f0);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fersie-value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  border-color: var(--fersie-gold, #c5a059);
+}
+
+.fersie-value-icon {
+  width: 50px;
+  height: 50px;
+  background-color: var(--fersie-gold-light, #f3e5c8);
+  color: var(--fersie-gold-dark, #8c6e2d);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* Collection Filter Tabs */
+.fersie-filter-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.fersie-filter-btn {
+  background-color: #ffffff;
+  border: 1px solid var(--fersie-neutral-300, #cbd5e0);
+  color: var(--fersie-neutral-700, #4a5568);
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fersie-filter-btn:hover {
+  border-color: var(--fersie-gold, #c5a059);
+  color: var(--fersie-gold, #c5a059);
+}
+
+.fersie-filter-btn.active {
+  background-color: var(--fersie-gold, #c5a059);
+  color: #ffffff;
+  border-color: var(--fersie-gold, #c5a059);
+  box-shadow: 0 2px 6px rgba(197, 160, 89, 0.3);
+}
+
+/* Product Cards Grid */
+.fersie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 2rem;
+}
+
+.fersie-product-card {
+  background-color: #ffffff;
+  border: 1px solid var(--fersie-neutral-300, #e2e8f0);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.fersie-product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  border-color: var(--fersie-gold, #c5a059);
+}
+
+.fersie-product-img-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* 1:1 Aspect Ratio */
+  background-color: #f7f7f7;
+  overflow: hidden;
+}
+
+.fersie-product-img-wrapper img,
+.fersie-product-img-wrapper svg,
+.fersie-product-img,
+.fersie-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.fersie-product-card:hover .fersie-product-img-wrapper img {
+  transform: scale(1.05);
+}
+
+.fersie-product-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+}
+
+.fersie-product-info {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.fersie-product-code {
+  font-size: 0.75rem;
+  color: var(--fersie-neutral-500, #a0aec0);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.fersie-product-title {
+  font-family: var(--fersie-font-serif, 'Playfair Display', serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: var(--fersie-tailoring-charcoal, #1a202c);
+}
+
+.fersie-product-desc {
+  font-size: 0.875rem;
+  color: var(--fersie-neutral-600, #718096);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.fersie-product-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--fersie-gold-dark, #9a762b);
+  margin-bottom: 1.25rem;
+  margin-top: auto;
+}
+
+.fersie-product-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+
+/* Modal Lightbox Viewer */
+dialog.fersie-modal {
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+.fersie-modal-content {
+  background-color: #ffffff;
+  border-radius: 16px;
+  max-width: 600px;
+  width: 92%;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  margin: auto;
+}
+
+.fersie-modal-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--fersie-neutral-200, #edf2f7);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--fersie-tailoring-beige, #faf8f5);
+}
+
+.fersie-modal-body {
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 580px) {
+  .fersie-modal-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fersie-modal-img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+  background-color: #f0f0f0;
+}
+
+.fersie-modal-details {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Footer */
+.fersie-site-footer {
+  background-color: var(--fersie-tailoring-black, #111111);
+  color: var(--fersie-neutral-400, #cbd5e0);
+  padding: 4rem 0 2rem 0;
+  border-top: 1px solid var(--fersie-neutral-800, #2d3748);
+}
+
+.fersie-footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.fersie-footer-brand h3 {
+  font-family: var(--fersie-font-serif, 'Playfair Display', serif);
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+
+.fersie-footer-links h4 {
+  color: #ffffff;
+  font-size: 1rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.fersie-footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fersie-footer-links ul li {
+  margin-bottom: 0.5rem;
+}
+
+.fersie-footer-links ul a {
+  color: var(--fersie-neutral-400, #cbd5e0);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.fersie-footer-links ul a:hover {
+  color: var(--fersie-gold, #c5a059);
+}
+
+.fersie-footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid var(--fersie-neutral-800, #2d3748);
+  font-size: 0.875rem;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+  .fersie-nav-links,
+  .fersie-header-actions .fersie-wa-cta {
+    display: none;
+  }
+
+  .fersie-menu-toggle {
+    display: flex;
+  }
+
+  .fersie-hero h1 {
+    font-size: 2rem;
+  }
+
+  .fersie-hero {
+    padding: 3.5rem 0;
+  }
+}
