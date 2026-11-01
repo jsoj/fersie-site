@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initParallaxEffects();
   initWhatsAppLinks();
+  initDynamicProductsFromApp();
 });
 
 /**
@@ -272,4 +273,62 @@ function initWhatsAppLinks() {
     const text = `Olá FERSIÊ! Gostaria de falar com o atendimento exclusivo do ateliê sobre: ${context}.`;
     btn.href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
   });
+}
+
+/**
+ * 9. Dynamic Products Sync from app.fersie.com
+ */
+async function initDynamicProductsFromApp() {
+  const container = document.getElementById('products-container');
+  if (!container) return;
+
+  try {
+    const res = await fetch('https://app.fersie.com/api/v1/public/products/', { cache: 'no-cache' });
+    if (!res.ok) return;
+    const data = await res.json();
+    if (!data.results || data.results.length === 0) return;
+
+    const dynamicCards = data.results.map(prod => {
+      const imgUrl = prod.image_url || 'images/insta_hero.jpg';
+      const category = (prod.category || 'alfaiataria').toLowerCase();
+      const priceNum = parseFloat(prod.price);
+      const priceFormatted = priceNum > 0 ? `R$ ${priceNum.toLocaleString('pt-BR', {minimumFractionDigits: 2})}` : 'Sob Consulta';
+      const waMsg = encodeURIComponent(`Olá FERSIÊ! Gostaria de informações sobre a peça ${prod.name} (Ref: ${prod.code}).`);
+
+      return `
+        <article class="fersie-card fersie-reveal active is-visible" data-category="${category}">
+          <div class="fersie-card-media">
+            <span class="fersie-card-badge">${prod.category || 'Ateliê'}</span>
+            <img src="${imgUrl}" alt="${prod.name} FERSIÊ" loading="lazy">
+            <div class="fersie-card-quickview">
+              <button type="button" class="fersie-quickview-btn btn-preview-modal"
+                      data-title="${prod.name}"
+                      data-category="${category}"
+                      data-price="${priceFormatted}"
+                      data-img="${imgUrl}"
+                      data-code="${prod.code}"
+                      data-desc="${prod.name} — Cor: ${prod.color || 'Padrão'}, Tamanho: ${prod.size || 'Sob Medida'}.">
+                Visualização Rápida
+              </button>
+            </div>
+          </div>
+          <div class="fersie-card-content">
+            <span class="fersie-card-meta">${prod.featured ? '✦ Destaque Ateliê' : 'Disponível'}</span>
+            <h3 class="fersie-card-title"><a href="javascript:void(0)" class="btn-preview-modal" data-title="${prod.name}" data-price="${priceFormatted}" data-img="${imgUrl}" data-code="${prod.code}">${prod.name}</a></h3>
+            <div class="fersie-card-price">${priceFormatted}</div>
+            <div class="fersie-card-actions">
+              <a href="https://wa.me/5543988597348?text=${waMsg}" target="_blank" rel="noopener" class="fersie-card-btn">
+                Consultar Ateliê
+              </a>
+            </div>
+          </div>
+        </article>
+      `;
+    }).join('');
+
+    container.insertAdjacentHTML('afterbegin', dynamicCards);
+    initProductModal();
+  } catch (err) {
+    console.warn('Fallback: no dynamic products loaded from app.', err);
+  }
 }
