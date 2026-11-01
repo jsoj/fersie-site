@@ -1,18 +1,81 @@
 /**
- * Fersie Site — Vanilla JavaScript Interactive Engine
- * Milestone 3: Site Institucional
+ * FERSIÊ — High Tailoring & Fine Jewelry
+ * Luxury Interactive Engine & Motion Controller
+ * Based on Fersie Design System (ds.fersie.com)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initScrollController();
+  initScrollObserver();
   initMobileDrawer();
   initCollectionFilters();
-  initWhatsAppCTAs();
   initProductModal();
   initSmoothScroll();
+  initParallaxEffects();
+  initWhatsAppLinks();
 });
 
 /**
- * 1. Mobile Menu / Navigation Drawer Toggle
+ * 1. Scroll Controller (Progress Bar & Sticky Header Transformation)
+ */
+function initScrollController() {
+  const progressBar = document.querySelector('.fersie-scroll-progress');
+  const header = document.querySelector('.fersie-site-header');
+
+  const onScroll = () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    
+    // Header transition on scroll
+    if (header) {
+      if (scrollTop > 40) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }
+
+    // Fallback progress bar calculation if CSS Scroll-Driven Animations not active
+    if (progressBar && scrollHeight > 0) {
+      const progressPercent = (scrollTop / scrollHeight) * 100;
+      progressBar.style.width = `${progressPercent}%`;
+    }
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+/**
+ * 2. Scroll Reveal Animations (IntersectionObserver Fallback & Progressive Enhancement)
+ */
+function initScrollObserver() {
+  const revealElements = document.querySelectorAll('.fersie-reveal');
+  if (!revealElements.length) return;
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(el => observer.observe(el));
+  } else {
+    // Immediate fallback
+    revealElements.forEach(el => el.classList.add('active'));
+  }
+}
+
+/**
+ * 3. Mobile Navigation Drawer
  */
 function initMobileDrawer() {
   const toggleBtn = document.getElementById('menu-toggle-btn');
@@ -36,37 +99,31 @@ function initMobileDrawer() {
     document.body.style.overflow = '';
   }
 
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', openDrawer);
-  }
+  if (toggleBtn) toggleBtn.addEventListener('click', openDrawer);
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  if (overlay) overlay.addEventListener('click', closeDrawer);
 
-  if (closeBtn) {
-    closeBtn.addEventListener('click', closeDrawer);
-  }
-
-  if (overlay) {
-    overlay.addEventListener('click', closeDrawer);
-  }
-
-  // Close drawer on link click
   const drawerLinks = drawer.querySelectorAll('a');
-  drawerLinks.forEach(link => {
-    link.addEventListener('click', closeDrawer);
+  drawerLinks.forEach(link => link.addEventListener('click', closeDrawer));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) {
+      closeDrawer();
+    }
   });
 }
 
 /**
- * 2. Collection Filter Tab Bar Logic
+ * 4. Collection Filter Tabs Logic
  */
 function initCollectionFilters() {
   const filterBtns = document.querySelectorAll('.fersie-filter-btn');
-  const productCards = document.querySelectorAll('.fersie-product-card');
+  const productCards = document.querySelectorAll('.fersie-card');
 
   if (!filterBtns.length || !productCards.length) return;
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      // Remove active class from all buttons
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
@@ -76,8 +133,16 @@ function initCollectionFilters() {
         const cardCategory = card.getAttribute('data-category');
         if (filterCategory === 'all' || cardCategory === filterCategory) {
           card.style.display = 'flex';
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, 50);
         } else {
-          card.style.display = 'none';
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(15px)';
+          setTimeout(() => {
+            card.style.display = 'none';
+          }, 250);
         }
       });
     });
@@ -85,40 +150,14 @@ function initCollectionFilters() {
 }
 
 /**
- * 3. WhatsApp CTA Dynamic Link Handler
- */
-function initWhatsAppCTAs() {
-  const defaultPhone = '5511999999999';
-
-  document.body.addEventListener('click', (e) => {
-    const targetBtn = e.target.closest('.fersie-wa-product-cta');
-    if (!targetBtn) return;
-
-    const productName = targetBtn.getAttribute('data-wa-product') || 'produto Fersie';
-    const productPrice = targetBtn.getAttribute('data-wa-price') || '';
-    const productCode = targetBtn.getAttribute('data-wa-code') || '';
-    const customPhone = targetBtn.getAttribute('data-wa-phone') || defaultPhone;
-
-    let message = `Olá Fersie! Gostaria de mais informações e atendimento para o produto: ${productName}`;
-    if (productCode) message += ` (Código: ${productCode})`;
-    if (productPrice) message += ` no valor de R$ ${productPrice}`;
-    message += `.`;
-
-    const encodedMsg = encodeURIComponent(message);
-    const waUrl = `https://wa.me/${customPhone}?text=${encodedMsg}`;
-    
-    targetBtn.setAttribute('href', waUrl);
-  });
-}
-
-/**
- * 4. Interactive Product Preview Modal / Lightbox Viewer
+ * 5. Interactive Product Quick-View Lightbox Modal
  */
 function initProductModal() {
   const modal = document.getElementById('product-modal');
   if (!modal) return;
 
   const closeBtn = document.getElementById('modal-close-btn');
+  const modalBackdrop = document.getElementById('modal-backdrop');
   const modalTitle = document.getElementById('modal-title');
   const modalImg = document.getElementById('modal-img');
   const modalCategory = document.getElementById('modal-category');
@@ -127,72 +166,63 @@ function initProductModal() {
   const modalPrice = document.getElementById('modal-price');
   const modalWaBtn = document.getElementById('modal-wa-btn');
 
-  // Delegated click listener for preview buttons
-  document.body.addEventListener('click', (e) => {
-    const previewBtn = e.target.closest('.btn-preview-modal');
-    if (!previewBtn) return;
-
-    const title = previewBtn.getAttribute('data-title') || 'Produto Fersie';
-    const category = previewBtn.getAttribute('data-category') || 'Coleção';
-    const price = previewBtn.getAttribute('data-price') || 'Sob Consulta';
-    const imgSrc = previewBtn.getAttribute('data-img') || 'images/placeholder_fersie.png';
-    const desc = previewBtn.getAttribute('data-desc') || 'Peça exclusiva da Fersie desenvolvida com caimento e materiais nobres.';
-    const code = previewBtn.getAttribute('data-code') || 'FER-000';
-
-    if (modalTitle) modalTitle.textContent = title;
+  function openModal(data) {
+    if (modalTitle) modalTitle.textContent = data.title;
     if (modalImg) {
-      modalImg.setAttribute('src', imgSrc);
-      modalImg.setAttribute('alt', title);
+      modalImg.setAttribute('src', data.img);
+      modalImg.setAttribute('alt', data.title);
     }
-    if (modalCategory) modalCategory.textContent = category.toUpperCase();
-    if (modalCode) modalCode.textContent = `CÓDIGO: ${code}`;
-    if (modalDesc) modalDesc.textContent = desc;
-    if (modalPrice) modalPrice.textContent = price;
+    if (modalCategory) modalCategory.textContent = data.category.toUpperCase();
+    if (modalCode) modalCode.textContent = `REF: ${data.code}`;
+    if (modalDesc) modalDesc.textContent = data.desc;
+    if (modalPrice) modalPrice.textContent = data.price;
 
     if (modalWaBtn) {
-      const message = `Olá Fersie! Tenho interesse no produto ${title} (Código: ${code}) no valor de ${price}.`;
-      const waUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
-      modalWaBtn.setAttribute('href', waUrl);
-      modalWaBtn.setAttribute('data-wa-product', title);
-      modalWaBtn.setAttribute('data-wa-code', code);
-      modalWaBtn.setAttribute('data-wa-price', price);
+      const phone = '5543988597348';
+      const text = `Olá FERSIÊ! Gostaria de consultar a disponibilidade da peça "${data.title}" (Ref: ${data.code}) no valor de ${data.price}. Poderiam me atender?`;
+      modalWaBtn.href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
     }
 
-    if (typeof modal.showModal === 'function') {
-      modal.showModal();
-    } else {
-      modal.setAttribute('open', 'true');
-    }
-  });
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      if (typeof modal.close === 'function') {
-        modal.close();
-      } else {
-        modal.removeAttribute('open');
-      }
-    });
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
   }
 
-  // Close on backdrop click
-  modal.addEventListener('click', (e) => {
-    const rect = modal.getBoundingClientRect();
-    const isInDialog = (rect.top <= e.clientY && e.clientY <= rect.top + rect.height &&
-      rect.left <= e.clientX && e.clientX <= rect.left + rect.width);
-    if (!isInDialog) {
-      if (typeof modal.close === 'function') modal.close();
-      else modal.removeAttribute('open');
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.body.addEventListener('click', (e) => {
+    const trigger = e.target.closest('.btn-preview-modal');
+    if (!trigger) return;
+
+    const data = {
+      title: trigger.getAttribute('data-title') || 'Peça Exclusiva FERSIÊ',
+      category: trigger.getAttribute('data-category') || 'Coleção',
+      price: trigger.getAttribute('data-price') || 'Sob Consulta',
+      img: trigger.getAttribute('data-img') || 'images/logo_fersie_padrao.png',
+      desc: trigger.getAttribute('data-desc') || 'Modelagem impecável em tecidos nobres e acabamentos artesanais de alta alfaiataria.',
+      code: trigger.getAttribute('data-code') || 'FER-001'
+    };
+
+    openModal(data);
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
     }
   });
 }
 
 /**
- * 5. Smooth Scrolling for Internal Anchor Links
+ * 6. Smooth Scrolling for Internal Hash Anchors
  */
 function initSmoothScroll() {
-  const anchorLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
-  anchorLinks.forEach(link => {
+  document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(link => {
     link.addEventListener('click', (e) => {
       const targetId = link.getAttribute('href').substring(1);
       const targetElem = document.getElementById(targetId);
@@ -201,5 +231,45 @@ function initSmoothScroll() {
         targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
+  });
+}
+
+/**
+ * 7. Subtle Parallax on Luxury Visual Elements
+ */
+function initParallaxEffects() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+
+  const heroVisual = document.querySelector('.fersie-hero-image-wrap');
+  if (!heroVisual) return;
+
+  heroVisual.addEventListener('mousemove', (e) => {
+    const rect = heroVisual.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    const img = heroVisual.querySelector('img');
+    if (img) {
+      img.style.transform = `scale(1.04) translate(${x * 0.02}px, ${y * 0.02}px)`;
+    }
+  });
+
+  heroVisual.addEventListener('mouseleave', () => {
+    const img = heroVisual.querySelector('img');
+    if (img) {
+      img.style.transform = 'scale(1)';
+    }
+  });
+}
+
+/**
+ * 8. Dynamic WhatsApp Link Builder
+ */
+function initWhatsAppLinks() {
+  const phone = '5543988597348';
+  document.querySelectorAll('.fersie-wa-direct').forEach(btn => {
+    const context = btn.getAttribute('data-context') || 'Atendimento Geral';
+    const text = `Olá FERSIÊ! Gostaria de falar com o atendimento exclusivo do ateliê sobre: ${context}.`;
+    btn.href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
   });
 }

@@ -3,31 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coleção Alfaiataria Feminina — Fersie High Tailoring</title>
-  <!-- Design System CSS Integration -->
-  <link rel="stylesheet" href="../../fersie-design-system/dist/fersie-design-system.min.css">
-  <link rel="stylesheet" href="../css/fersie-design-system.css">
+  <title>Alfaiataria Nobre — FERSIÊ High Tailoring</title>
+  <meta name="description" content="Coleção de Alfaiataria Nobre FERSIÊ: Blazers estruturados, coletes sob medida e calças pantalonas em linho belga e lã fria.">
+  <link rel="icon" type="image/png" href="../images/emblema_fersie_redondo.png">
+
+  <!-- Google Fonts Preconnect & Luxury Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Design System & Site CSS -->
+  <link rel="stylesheet" href="../css/fersie-design-system.min.css">
   <link rel="stylesheet" href="../css/site.css">
 </head>
-<body class="fersie-text-body">
+<body>
 
-  <!-- Header -->
+  <!-- Top Scroll Progress Indicator -->
+  <div class="fersie-scroll-progress" aria-hidden="true"></div>
+
+  <!-- Announcement Luxury Bar -->
+  <aside class="fersie-top-bar" aria-label="Avisos Oficiais">
+    <span>✦ Ateliê de Alfaiataria Nobre &amp; Joalheria Autoral</span>
+    <span>•</span>
+    <span><a href="https://www.instagram.com/fersie.oficial/" target="_blank" rel="noopener">Instagram @fersie.oficial (+8.7k)</a></span>
+  </aside>
+
+  <!-- Sticky Header -->
   <header class="fersie-site-header">
     <div class="fersie-container">
       <nav class="fersie-nav" aria-label="Navegação Principal">
-        <a href="../index.html" class="fersie-logo fersie-heading-lg">FERSIE</a>
         
+        <a href="../index.html" class="fersie-brand-link">
+          <img src="../images/logo_fersie_transparente.png" alt="FERSIÊ Logo" class="fersie-brand-logo-img" onerror="this.style.display='none'">
+          <span class="fersie-brand-wordmark">FERSIÊ</span>
+        </a>
+
         <ul class="fersie-nav-links">
           <li><a href="../index.html">Início</a></li>
+          <li><a href="../index.html#manifesto">Manifesto</a></li>
           <li><a href="alfaiataria.html" class="active">Alfaiataria</a></li>
-          <li><a href="bijuterias.html">Bijuterias Finas</a></li>
-          <li><a href="colecoes.html">Coleções</a></li>
+          <li><a href="bijuterias.html">Joias Finas</a></li>
+          <li><a href="../index.html#instagram">Instagram</a></li>
         </ul>
 
         <div class="fersie-header-actions">
-          <a href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Gostaria%20de%20atendimento%20para%20a%20cole%C3%A7%C3%A3o%20de%20Alfaiataria%20Fersie." target="_blank" rel="noopener" class="fersie-btn fersie-btn-gold fersie-wa-cta">Atendimento WhatsApp</a>
-          
-          <button type="button" class="fersie-menu-toggle" id="menu-toggle-btn" aria-label="Abrir Menu" aria-expanded="false" aria-controls="nav-drawer">
+          <a href="https://wa.me/5543988597348?text=Ol%C3%A1%20FERSI%C3%8A%21%20Gostaria%20de%20consultoria%20sobre%20Alfaiataria." 
+             target="_blank" rel="noopener" 
+             class="fersie-btn-luxury fersie-btn-gold">
+            <span>Ateliê WhatsApp</span>
+          </a>
+
+          <button type="button" class="fersie-menu-toggle" id="menu-toggle-btn" aria-label="Abrir Menu">
             <span></span>
             <span></span>
             <span></span>
@@ -37,157 +63,150 @@
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
-  <div id="nav-drawer" class="fersie-drawer" aria-hidden="true">
-    <div class="fersie-drawer-overlay" id="drawer-overlay"></div>
-    <div class="fersie-drawer-content">
-      <button type="button" class="fersie-drawer-close" id="drawer-close-btn" aria-label="Fechar Menu">&times;</button>
-      <h3 class="fersie-heading-md">FERSIE</h3>
-      <p class="fersie-text-muted">Alfaiataria Feminina</p>
-      <ul>
-        <li><a href="../index.html">Início</a></li>
-        <li><a href="alfaiataria.html">Alfaiataria</a></li>
-        <li><a href="bijuterias.html">Bijuterias Finas</a></li>
-        <li><a href="colecoes.html">Coleções Exclusivas</a></li>
-      </ul>
-      <div style="margin-top: auto; padding-top: 1rem;">
-        <a href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Gostaria%20de%20atendimento%20sob%20medida." target="_blank" class="fersie-btn fersie-btn-primary" style="width: 100%;">Atendimento WhatsApp</a>
-      </div>
-    </div>
-  </div>
-
   <main>
-    <!-- Collection Banner -->
-    <section class="fersie-hero" style="padding: 3.5rem 0;">
+    <!-- Collection Hero Banner -->
+    <section class="fersie-hero-section" style="min-height: 45vh; padding: 3.5rem 0;">
       <div class="fersie-container">
-        <span class="fersie-hero-badge">High Tailoring Collection</span>
-        <h1 class="fersie-heading-xl">Coleção Alfaiataria Feminina</h1>
-        <p class="fersie-text-body">Blazers estruturados, coletes sob medida, calças retas e ternos em tecidos nobres com corte anatômico exclusivo Fersie.</p>
+        <div style="max-width: 760px;" class="fersie-reveal">
+          <span class="fersie-tag-pill">✦ Linha de Alfaiataria Nobre</span>
+          <h1 class="fersie-hero-title">Cortes Estruturados &amp; <em>Fluidez Natural</em></h1>
+          <p class="fersie-hero-description">
+            Blazers anatômicos, calças retas em linho belga e coletes com abotoamento duplo. A elegância descomplicada desenhada para acompanhar você do dia para a noite com conforto inegociável.
+          </p>
+        </div>
       </div>
     </section>
 
     <!-- Product Grid -->
-    <section class="fersie-section">
+    <section class="fersie-collections-section">
       <div class="fersie-container">
-        <div class="fersie-grid" id="products-container">
-          
-          <!-- Product 1 -->
-          <article class="fersie-product-card" data-category="alfaiataria">
-            <div class="fersie-product-img-wrapper">
-              <span class="fersie-badge fersie-badge-info fersie-product-badge">Alfaiataria</span>
-              <img src="../images/lookbook1.svg" alt="Blazer Alfaiataria Fersie Gold" class="fersie-product-img fersie-img">
+        
+        <div class="fersie-products-grid">
+
+          <!-- Item 1: Blazer Estruturado -->
+          <article class="fersie-card fersie-reveal" data-category="alfaiataria">
+            <div class="fersie-card-media">
+              <span class="fersie-card-badge">Lã Fria Nobre</span>
+              <img src="../images/hero_tailoring_editorial.jpg" alt="Blazer Alfaiataria Estruturado FERSIÊ" loading="lazy">
+              <div class="fersie-card-quickview">
+                <button type="button" class="fersie-quickview-btn btn-preview-modal"
+                        data-title="Blazer Alfaiataria Estruturado FERSIÊ"
+                        data-category="Alfaiataria"
+                        data-price="R$ 489,00"
+                        data-code="FER-BLZ-101"
+                        data-img="../images/hero_tailoring_editorial.jpg"
+                        data-desc="Modelagem anatômica com ombreiras discretas, corte alfaiate italiano, botões banhados a ouro e forro em cetim de seda.">
+                  ✦ Ver Detalhes
+                </button>
+              </div>
             </div>
-            <div class="fersie-product-info">
-              <span class="fersie-product-code">CÓDIGO: FER-101</span>
-              <h3 class="fersie-product-title">Blazer Alfaiataria Fersie Gold</h3>
-              <p class="fersie-product-desc">Corte estruturado em lã fria com lapela entalhada e botões banhados a ouro.</p>
-              <div class="fersie-product-price">R$ 349,90</div>
-              <div class="fersie-product-actions">
-                <button type="button" class="fersie-btn fersie-btn-sm fersie-btn-outline btn-preview-modal" 
-                        data-title="Blazer Alfaiataria Fersie Gold" 
-                        data-category="Alfaiataria" 
-                        data-price="R$ 349,90" 
-                        data-img="../images/lookbook1.svg" 
-                        data-code="FER-101"
-                        data-desc="Lã fria nobre de alta durabilidade, caimento estruturado e forro acetinado.">Ver Detalhes</button>
-                <a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20o%20Blazer%20Alfaiataria%20Fersie%20Gold%20%28C%C3%B3digo%3A%20FER-101%29." 
-                   target="_blank" rel="noopener" 
-                   class="fersie-btn fersie-btn-sm fersie-btn-gold fersie-wa-product-cta"
-                   data-wa-product="Blazer Alfaiataria Fersie Gold" 
-                   data-wa-price="349.90" 
-                   data-wa-code="FER-101">Comprar via WhatsApp</a>
+            <div class="fersie-card-body">
+              <span class="fersie-card-sku">REF: FER-BLZ-101</span>
+              <h3 class="fersie-card-title">Blazer Alfaiataria Estruturado</h3>
+              <p class="fersie-card-desc">Corte italiano com forro em seda e acabamento refinado.</p>
+              <div class="fersie-card-footer">
+                <span class="fersie-price-tag">R$ 489,00</span>
+                <a href="https://wa.me/5543988597348?text=Ol%C3%A1%20FERSI%C3%8A%21%20Gostaria%20do%20Blazer%20Estruturado%20%28Ref%3A%20FER-BLZ-101%29." target="_blank" rel="noopener" class="fersie-btn-luxury fersie-btn-gold" style="padding:0.5rem 1rem; font-size:0.75rem;">Comprar</a>
               </div>
             </div>
           </article>
 
-          <!-- Product 2 -->
-          <article class="fersie-product-card" data-category="alfaiataria">
-            <div class="fersie-product-img-wrapper">
-              <span class="fersie-badge fersie-badge-info fersie-product-badge">Alfaiataria</span>
-              <img src="../images/lookbook1.svg" alt="Calça Alfaiataria Reta Linho" class="fersie-product-img fersie-img">
+          <!-- Item 2: Calça Reta Linho -->
+          <article class="fersie-card fersie-reveal" data-category="alfaiataria">
+            <div class="fersie-card-media">
+              <span class="fersie-card-badge">Linho Lavado</span>
+              <img src="../images/editorial_alfaiataria_01.jpg" alt="Calça Alfaiataria Reta Linho Belga" loading="lazy">
+              <div class="fersie-card-quickview">
+                <button type="button" class="fersie-quickview-btn btn-preview-modal"
+                        data-title="Calça Alfaiataria Reta em Linho Belga"
+                        data-category="Alfaiataria"
+                        data-price="R$ 329,00"
+                        data-code="FER-CAL-102"
+                        data-img="../images/editorial_alfaiataria_01.jpg"
+                        data-desc="Cós alto com passadores duplos para cinto, bolsos faca embutidos e vinco frontal permanente.">
+                  ✦ Ver Detalhes
+                </button>
+              </div>
             </div>
-            <div class="fersie-product-info">
-              <span class="fersie-product-code">CÓDIGO: FER-102</span>
-              <h3 class="fersie-product-title">Calça Alfaiataria Reta Linho</h3>
-              <p class="fersie-product-desc">Cinta alta, bolsos faca e vincos alinhados em tecido misto de linho e algodão nobre.</p>
-              <div class="fersie-product-price">R$ 259,00</div>
-              <div class="fersie-product-actions">
-                <button type="button" class="fersie-btn fersie-btn-sm fersie-btn-outline btn-preview-modal" 
-                        data-title="Calça Alfaiataria Reta Linho" 
-                        data-category="Alfaiataria" 
-                        data-price="R$ 259,00" 
-                        data-img="../images/lookbook1.svg" 
-                        data-code="FER-102"
-                        data-desc="Caimento reto moderno com bolso invisível traseiro e cintura anatômica.">Ver Detalhes</button>
-                <a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20a%20Cal%C3%A7a%20Alfaiataria%20Reta%20Linho%20%28C%C3%B3digo%3A%20FER-102%29." 
-                   target="_blank" rel="noopener" 
-                   class="fersie-btn fersie-btn-sm fersie-btn-gold fersie-wa-product-cta"
-                   data-wa-product="Calça Alfaiataria Reta Linho" 
-                   data-wa-price="259.00" 
-                   data-wa-code="FER-102">Comprar via WhatsApp</a>
+            <div class="fersie-card-body">
+              <span class="fersie-card-sku">REF: FER-CAL-102</span>
+              <h3 class="fersie-card-title">Calça Reta em Linho Belga</h3>
+              <p class="fersie-card-desc">Cós anatômico e frescor térmico em linho europeu.</p>
+              <div class="fersie-card-footer">
+                <span class="fersie-price-tag">R$ 329,00</span>
+                <a href="https://wa.me/5543988597348?text=Ol%C3%A1%20FERSI%C3%8A%21%20Gostaria%20da%20Cal%C3%A7a%20Linho%20%28Ref%3A%20FER-CAL-102%29." target="_blank" rel="noopener" class="fersie-btn-luxury fersie-btn-gold" style="padding:0.5rem 1rem; font-size:0.75rem;">Comprar</a>
               </div>
             </div>
           </article>
 
-          <!-- Product 3 -->
-          <article class="fersie-product-card" data-category="alfaiataria">
-            <div class="fersie-product-img-wrapper">
-              <span class="fersie-badge fersie-badge-info fersie-product-badge">Alfaiataria</span>
-              <img src="../images/lookbook1.svg" alt="Colete Alfaiataria Botões Duplos" class="fersie-product-img fersie-img">
+          <!-- Item 3: Conjunto Fluido -->
+          <article class="fersie-card fersie-reveal" data-category="alfaiataria">
+            <div class="fersie-card-media">
+              <span class="fersie-card-badge">Conjunto</span>
+              <img src="../images/editorial_alfaiataria_02.jpg" alt="Conjunto Fluido Alfaiataria FERSIÊ" loading="lazy">
+              <div class="fersie-card-quickview">
+                <button type="button" class="fersie-quickview-btn btn-preview-modal"
+                        data-title="Conjunto Fluido Alfaiataria Terracota"
+                        data-category="Alfaiataria"
+                        data-price="R$ 540,00"
+                        data-code="FER-CJ-109"
+                        data-img="../images/editorial_alfaiataria_02.jpg"
+                        data-desc="Blazer desestruturado e pantalona ampla em tons terrosos. Peça atemporal de alto impacto visual.">
+                  ✦ Ver Detalhes
+                </button>
+              </div>
             </div>
-            <div class="fersie-product-info">
-              <span class="fersie-product-code">CÓDIGO: FER-103</span>
-              <h3 class="fersie-product-title">Colete Alfaiataria Botões Duplos</h3>
-              <p class="fersie-product-desc">Colete acinturado com abotoamento duplo frontal e fivela de ajuste posterior.</p>
-              <div class="fersie-product-price">R$ 219,90</div>
-              <div class="fersie-product-actions">
-                <button type="button" class="fersie-btn fersie-btn-sm fersie-btn-outline btn-preview-modal" 
-                        data-title="Colete Alfaiataria Botões Duplos" 
-                        data-category="Alfaiataria" 
-                        data-price="R$ 219,90" 
-                        data-img="../images/lookbook1.svg" 
-                        data-code="FER-103"
-                        data-desc="Versátil e elegante, pode ser usado sozinho ou sobreposto a camisas de seda.">Ver Detalhes</button>
-                <a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20o%20Colete%20Alfaiataria%20Bot%C3%B5es%20Duplos%20%28C%C3%B3digo%3A%20FER-103%29." 
-                   target="_blank" rel="noopener" 
-                   class="fersie-btn fersie-btn-sm fersie-btn-gold fersie-wa-product-cta"
-                   data-wa-product="Colete Alfaiataria Botões Duplos" 
-                   data-wa-price="219.90" 
-                   data-wa-code="FER-103">Comprar via WhatsApp</a>
+            <div class="fersie-card-body">
+              <span class="fersie-card-sku">REF: FER-CJ-109</span>
+              <h3 class="fersie-card-title">Conjunto Fluido Terracota</h3>
+              <p class="fersie-card-desc">Elegância despretensiosa em tom terracota orgânico da marca.</p>
+              <div class="fersie-card-footer">
+                <span class="fersie-price-tag">R$ 540,00</span>
+                <a href="https://wa.me/5543988597348?text=Ol%C3%A1%20FERSI%C3%8A%21%20Gostaria%20do%20Conjunto%20Terracota%20%28Ref%3A%20FER-CJ-109%29." target="_blank" rel="noopener" class="fersie-btn-luxury fersie-btn-gold" style="padding:0.5rem 1rem; font-size:0.75rem;">Comprar</a>
               </div>
             </div>
           </article>
 
         </div>
+
       </div>
     </section>
   </main>
 
-  <!-- Modal Dialog -->
-  <dialog id="product-modal" class="fersie-modal">
-    <div class="fersie-modal-content">
-      <div class="fersie-modal-header">
-        <h3 id="modal-title" class="fersie-modal-title">Detalhes do Produto</h3>
-        <button type="button" id="modal-close-btn" class="fersie-modal-close" aria-label="Fechar">&times;</button>
+  <!-- Quick-View Interactive Lightbox Modal -->
+  <div id="product-modal" class="fersie-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="fersie-modal-backdrop" id="modal-backdrop"></div>
+    <div class="fersie-modal-dialog">
+      <button type="button" class="fersie-modal-close" id="modal-close-btn" aria-label="Fechar Modal">&times;</button>
+      
+      <div class="fersie-modal-image-wrap">
+        <img id="modal-img" src="../images/logo_fersie_padrao.png" alt="Visualização do Produto">
       </div>
-      <div class="fersie-modal-body">
-        <img id="modal-img" src="../images/lookbook1.svg" alt="Imagem do produto" class="fersie-modal-img">
-        <div class="fersie-modal-details">
-          <span id="modal-category" class="fersie-badge fersie-badge-info" style="align-self: flex-start; margin-bottom: 0.5rem;">ALFAIATARIA</span>
-          <span id="modal-code" class="fersie-text-xs" style="margin-bottom: 0.75rem;">CÓDIGO: FER-000</span>
-          <p id="modal-desc" class="fersie-text-body" style="font-size: 0.95rem; margin-bottom: 1.25rem;">Descrição do produto.</p>
-          <div id="modal-price" class="fersie-product-price" style="font-size: 1.5rem; margin-bottom: 1.25rem;">R$ 0,00</div>
-          <a id="modal-wa-btn" href="https://wa.me/5511999999999" target="_blank" rel="noopener" class="fersie-btn fersie-btn-gold fersie-wa-product-cta" style="width: 100%;">Comprar via WhatsApp</a>
+
+      <div class="fersie-modal-details">
+        <span id="modal-category" style="font-size:0.76rem; letter-spacing:0.14em; color:var(--fersie-gold,#9d702d); font-weight:600; text-transform:uppercase; margin-bottom:0.35rem;">COLEÇÃO</span>
+        <span id="modal-code" style="font-size:0.82rem; color:#888; margin-bottom:0.75rem;">REF: FER-001</span>
+        <h3 id="modal-title" style="font-size:1.65rem; margin-bottom:1rem; font-family:'Playfair Display',serif;">Nome da Peça</h3>
+        <p id="modal-desc" style="font-size:0.95rem; color:#555; line-height:1.7; margin-bottom:1.75rem;">Descrição da peça.</p>
+        
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem; padding:1rem 0; border-top:1px solid #eee; border-bottom:1px solid #eee;">
+          <span style="font-size:0.85rem; color:#666; text-transform:uppercase; letter-spacing:0.08em;">Valor Exclusivo:</span>
+          <span id="modal-price" style="font-size:1.6rem; font-weight:700; color:#1c1c1c; font-family:'Playfair Display',serif;">R$ 0,00</span>
         </div>
+
+        <a id="modal-wa-btn" href="https://wa.me/5543988597348" target="_blank" rel="noopener" class="fersie-btn-luxury fersie-btn-gold" style="width:100%; text-align:center;">
+          ✦ Atendimento &amp; Compra no WhatsApp
+        </a>
       </div>
     </div>
-  </dialog>
+  </div>
 
   <!-- Footer -->
-  <footer class="fersie-site-footer">
+  <footer class="fersie-footer">
     <div class="fersie-container">
       <div class="fersie-footer-bottom">
-        <p class="fersie-text-sm">&copy; 2026 Fersie. Todos os direitos reservados. High Tailoring & Jewelry.</p>
+        <div>&copy; 2026 FERSIÊ. Alta Alfaiataria &amp; Joalheria Autoral. Todos os direitos reservados.</div>
+        <div><a href="https://www.instagram.com/fersie.oficial/" target="_blank" rel="noopener" style="color:#888; text-decoration:none;">Instagram @fersie.oficial</a></div>
       </div>
     </div>
   </footer>

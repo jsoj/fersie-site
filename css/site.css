@@ -1,60 +1,184 @@
-/* Custom site stylesheet extending Fersie Design System */
+/* ==========================================================================
+   FERSIÊ — High Tailoring & Fine Jewelry
+   International Luxury Fashion Stylesheet
+   Extending Fersie Design System (ds.fersie.com)
+   ========================================================================== */
 
+/* --------------------------------------------------------------------------
+   0. Global Reset & Smooth Scroll
+   -------------------------------------------------------------------------- */
 html {
   scroll-behavior: smooth;
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-*, *:before, *:after {
+*, *::before, *::after {
   box-sizing: inherit;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: #fdfdfd;
-  color: var(--fersie-neutral-800, #2d3748);
-  font-family: var(--fersie-font-sans, 'Inter', sans-serif);
+  background-color: var(--fersie-neutral-50, #fbf9f5);
+  color: var(--fersie-neutral-900, #1c1c1c);
+  font-family: var(--fersie-font-dubai, 'Dubai', 'Inter', -apple-system, sans-serif);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Scroll Progress Bar at the Top */
+.fersie-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #785025 0%, #9d702d 50%, #b98435 100%);
+  z-index: 1000;
+  transition: width 0.05s linear;
+}
+
+@supports ((animation-timeline: scroll()) and (animation-range: 0% 100%)) {
+  .fersie-scroll-progress {
+    width: 100%;
+    transform-origin: left;
+    animation: grow-progress auto linear both;
+    animation-timeline: scroll(root block);
+  }
+  @keyframes grow-progress {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   1. Typography & Luxury Layout System
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4, .fersie-serif {
+  font-family: 'Playfair Display', 'Dubai', Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-top: 0;
+  color: var(--fersie-neutral-900, #1c1c1c);
+}
+
+.fersie-gold-gradient-text {
+  background: linear-gradient(135deg, #785025 0%, #9d702d 50%, #b98435 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 .fersie-container {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 2rem;
 }
 
-/* Header & Navigation */
+.fersie-container-wide {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Top Announcement Luxury Bar */
+.fersie-top-bar {
+  background: #151311;
+  color: #dfd7cc;
+  padding: 0.6rem 1rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  border-bottom: 1px solid rgba(157, 112, 45, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.fersie-top-bar span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.fersie-top-bar a {
+  color: var(--fersie-gold-light, #b98435);
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.fersie-top-bar a:hover {
+  text-decoration: underline;
+  opacity: 0.9;
+}
+
+/* --------------------------------------------------------------------------
+   2. Header & Glassmorphic Navigation
+   -------------------------------------------------------------------------- */
 .fersie-site-header {
   position: sticky;
   top: 0;
-  z-index: 100;
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--fersie-neutral-300, #e5e5e5);
-  padding: 1rem 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  z-index: 900;
+  background: rgba(251, 249, 245, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(157, 112, 45, 0.15);
+  transition: padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  padding: 1.25rem 0;
+}
+
+.fersie-site-header.scrolled {
+  padding: 0.85rem 0;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border-bottom-color: rgba(157, 112, 45, 0.2);
 }
 
 .fersie-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
-.fersie-logo {
+.fersie-brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   text-decoration: none;
-  font-family: var(--fersie-font-serif, 'Playfair Display', serif);
+  color: inherit;
+}
+
+.fersie-brand-logo-img {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.fersie-brand-link:hover .fersie-brand-logo-img {
+  transform: scale(1.02);
+}
+
+.fersie-brand-wordmark {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.85rem;
+  letter-spacing: 0.15em;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--fersie-tailoring-charcoal, #1a202c);
-  font-size: 1.75rem;
+  margin: 0;
+  color: var(--fersie-neutral-900, #1c1c1c);
 }
 
 .fersie-nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 2.25rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -62,482 +186,1069 @@ body {
 
 .fersie-nav-links a {
   text-decoration: none;
-  color: var(--fersie-tailoring-charcoal, #2d3748);
+  color: var(--fersie-neutral-800, #2c2925);
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   font-weight: 500;
-  font-size: 0.95rem;
-  transition: color 0.2s ease;
+  padding: 0.5rem 0;
   position: relative;
+  transition: color 0.25s ease;
+}
+
+.fersie-nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1.5px;
+  background: var(--fersie-gradient-gold, linear-gradient(135deg, #785025 0%, #9d702d 50%, #b98435 100%));
+  transition: width 0.3s ease, left 0.3s ease;
 }
 
 .fersie-nav-links a:hover,
 .fersie-nav-links a.active {
-  color: var(--fersie-gold, #c5a059);
+  color: var(--fersie-gold, #9d702d);
 }
 
+.fersie-nav-links a:hover::after,
 .fersie-nav-links a.active::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
+  width: 100%;
   left: 0;
-  right: 0;
-  height: 2px;
-  background-color: var(--fersie-gold, #c5a059);
-  border-radius: 2px;
 }
 
 .fersie-header-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
-/* Mobile Menu Toggle Button */
+/* Luxury Buttons */
+.fersie-btn-luxury {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.fersie-btn-gold {
+  background: linear-gradient(135deg, #785025 0%, #9d702d 50%, #b98435 100%);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 15px rgba(157, 112, 45, 0.25);
+}
+
+.fersie-btn-gold:hover {
+  background: linear-gradient(135deg, #67421d 0%, #8c6124 50%, #a8742b 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(157, 112, 45, 0.35);
+  color: #ffffff;
+}
+
+.fersie-btn-outline {
+  background: transparent;
+  color: var(--fersie-neutral-900, #1c1c1c);
+  border: 1px solid rgba(28, 28, 28, 0.4);
+}
+
+.fersie-btn-outline:hover {
+  background: #1c1c1c;
+  color: #ffffff;
+  border-color: #1c1c1c;
+  transform: translateY(-2px);
+}
+
+.fersie-btn-gold-outline {
+  background: transparent;
+  color: var(--fersie-gold, #9d702d);
+  border: 1px solid var(--fersie-gold, #9d702d);
+}
+
+.fersie-btn-gold-outline:hover {
+  background: var(--fersie-gold, #9d702d);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Mobile Toggle */
 .fersie-menu-toggle {
   display: none;
+  flex-direction: column;
+  gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0.5rem;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 40px;
-  height: 40px;
-  border-radius: 4px;
 }
 
 .fersie-menu-toggle span {
-  display: block;
   width: 24px;
   height: 2px;
-  background-color: var(--fersie-tailoring-charcoal, #1a202c);
+  background-color: var(--fersie-neutral-900, #1c1c1c);
   transition: all 0.3s ease;
 }
 
-/* Mobile Navigation Drawer */
-.fersie-drawer {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1100;
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.fersie-drawer.open {
-  visibility: visible;
-  opacity: 1;
-}
-
-.fersie-drawer-overlay {
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-}
-
-.fersie-drawer-content {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 300px;
-  max-width: 85vw;
-  background-color: #ffffff;
-  padding: 2rem 1.5rem;
+/* --------------------------------------------------------------------------
+   3. Hero Section (International Fashion Editorial)
+   -------------------------------------------------------------------------- */
+.fersie-hero-section {
+  position: relative;
+  min-height: 88vh;
   display: flex;
-  flex-direction: column;
-  transform: translateX(100%);
-  transition: transform 0.3s ease;
-  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+  align-items: center;
+  padding: 4rem 0;
+  overflow: hidden;
+  background: #f4ede3;
 }
 
-.fersie-drawer.open .fersie-drawer-content {
-  transform: translateX(0);
+.fersie-hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 4rem;
 }
 
-.fersie-drawer-close {
-  align-self: flex-end;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  line-height: 1;
-  cursor: pointer;
-  color: var(--fersie-neutral-600, #718096);
-  padding: 0.25rem 0.5rem;
-  margin-bottom: 1.5rem;
+.fersie-hero-content {
+  position: relative;
+  z-index: 2;
 }
 
-.fersie-drawer ul {
-  list-style: none;
-  padding: 0;
-  margin: 1.5rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.fersie-drawer ul a {
-  text-decoration: none;
-  color: var(--fersie-tailoring-charcoal, #1a202c);
-  font-size: 1.1rem;
-  font-weight: 500;
-}
-
-/* Hero Section */
-.fersie-hero {
-  padding: 5rem 0;
-  text-align: center;
-  background: linear-gradient(135deg, #f7f5f0 0%, #f1ece1 100%);
-  border-bottom: 1px solid var(--fersie-neutral-300, #e2e8f0);
-}
-
-.fersie-hero-badge {
-  display: inline-block;
-  font-size: 0.85rem;
-  letter-spacing: 0.15em;
+.fersie-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem;
+  border-radius: 50px;
+  background: rgba(157, 112, 45, 0.1);
+  border: 1px solid rgba(157, 112, 45, 0.3);
+  color: var(--fersie-gold, #9d702d);
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--fersie-gold, #c5a059);
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 1.75rem;
 }
 
-.fersie-hero h1 {
-  font-size: 2.75rem;
-  margin-top: 0;
-  margin-bottom: 1.25rem;
-  color: var(--fersie-tailoring-charcoal, #1a202c);
-  line-height: 1.2;
+.fersie-hero-title {
+  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+  line-height: 1.08;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+  letter-spacing: -0.03em;
 }
 
-.fersie-hero p {
-  max-width: 680px;
-  margin: 0 auto 2.25rem auto;
+.fersie-hero-title em {
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+}
+
+.fersie-hero-description {
   font-size: 1.15rem;
-  color: var(--fersie-neutral-700, #4a5568);
   line-height: 1.7;
+  color: var(--fersie-neutral-700, #423d37);
+  max-width: 540px;
+  margin-bottom: 2.25rem;
+  font-weight: 300;
 }
 
 .fersie-hero-actions {
   display: flex;
-  gap: 1rem;
-  justify-content: center;
   flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-bottom: 3rem;
 }
 
-/* Section Common */
-.fersie-section {
-  padding: 4.5rem 0;
+.fersie-hero-stats {
+  display: flex;
+  gap: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(157, 112, 45, 0.2);
+}
+
+.fersie-stat-item h4 {
+  font-size: 1.75rem;
+  margin: 0;
+  font-weight: 600;
+  color: var(--fersie-gold-dark, #785025);
+}
+
+.fersie-stat-item p {
+  margin: 0.25rem 0 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fersie-neutral-600, #676159);
+}
+
+.fersie-hero-visual {
+  position: relative;
+}
+
+.fersie-hero-image-wrap {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(66, 43, 34, 0.18);
+  aspect-ratio: 4 / 5;
+}
+
+.fersie-hero-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fersie-hero-image-wrap:hover img {
+  transform: scale(1.04);
+}
+
+.fersie-hero-badge-floating {
+  position: absolute;
+  bottom: 2rem;
+  left: -2rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 1.25rem 1.5rem;
+  border-radius: 4px;
+  border-left: 3px solid var(--fersie-gold, #9d702d);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  max-width: 240px;
+}
+
+.fersie-hero-badge-floating h5 {
+  margin: 0 0 0.35rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  color: #1c1c1c;
+}
+
+.fersie-hero-badge-floating p {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* --------------------------------------------------------------------------
+   4. Scroll Animations System (Modern Web Guidance Progressive Enhancement)
+   -------------------------------------------------------------------------- */
+.fersie-reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.fersie-reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Native CSS Scroll-Driven Animations when supported */
+@supports ((animation-timeline: view()) and (animation-range: 0% 100%)) {
+  .fersie-scroll-driven {
+    animation: fersieFadeUp auto linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
+  }
+
+  @keyframes fersieFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fersie-scale-driven {
+    animation: fersieScaleDown auto linear both;
+    animation-timeline: view();
+    animation-range: entry 15% cover 45%;
+  }
+
+  @keyframes fersieScaleDown {
+    from {
+      transform: scale(1.08);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+}
+
+/* Reduced Motion Safety */
+@media (prefers-reduced-motion: reduce) {
+  .fersie-reveal,
+  .fersie-scroll-driven,
+  .fersie-scale-driven {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. Brand Manifesto Section (Boho-Chic & Mulher 30+)
+   -------------------------------------------------------------------------- */
+.fersie-manifesto-section {
+  padding: 6.5rem 0;
+  background: #ffffff;
+  border-top: 1px solid rgba(157, 112, 45, 0.12);
+  border-bottom: 1px solid rgba(157, 112, 45, 0.12);
+}
+
+.fersie-manifesto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 4.5rem;
+  align-items: center;
+}
+
+.fersie-manifesto-badge {
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fersie-gold, #9d702d);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.fersie-manifesto-title {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.fersie-quote-box {
+  border-left: 2px solid var(--fersie-gold, #9d702d);
+  padding-left: 1.5rem;
+  margin: 1.75rem 0;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--fersie-neutral-800, #332f2b);
+}
+
+.fersie-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.fersie-pillar-card {
+  padding: 1.5rem;
+  background: #fbf9f5;
+  border-radius: 4px;
+  border: 1px solid rgba(157, 112, 45, 0.15);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.fersie-pillar-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--fersie-gold, #9d702d);
+}
+
+.fersie-pillar-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: var(--fersie-gold, #9d702d);
+  margin-bottom: 0.5rem;
+}
+
+.fersie-pillar-card h4 {
+  font-size: 1.05rem;
+  margin: 0 0 0.5rem;
+}
+
+.fersie-pillar-card p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+.fersie-manifesto-media {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.fersie-media-frame {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.fersie-media-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.fersie-media-frame:hover img {
+  transform: scale(1.05);
+}
+
+.fersie-media-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, transparent 100%);
+  color: #ffffff;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+}
+
+/* --------------------------------------------------------------------------
+   6. Curated Collections & Tab Filter
+   -------------------------------------------------------------------------- */
+.fersie-collections-section {
+  padding: 6.5rem 0;
+  background: #fbf9f5;
 }
 
 .fersie-section-header {
   text-align: center;
-  max-width: 700px;
-  margin: 0 auto 3rem auto;
+  max-width: 680px;
+  margin: 0 auto 3rem;
 }
 
-.fersie-section-header h2 {
-  margin-top: 0;
+.fersie-section-subtitle {
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fersie-gold, #9d702d);
+  font-weight: 600;
   margin-bottom: 0.75rem;
-  font-size: 2.25rem;
+  display: block;
 }
 
-.fersie-section-header p {
-  color: var(--fersie-neutral-600, #718096);
+.fersie-section-title {
+  font-size: clamp(2.2rem, 3.8vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.fersie-section-desc {
+  color: var(--fersie-neutral-700, #555);
   font-size: 1.05rem;
+  margin: 0;
 }
 
-/* Brand Story / Values Section */
-.fersie-about-section {
-  background-color: #ffffff;
-  border-bottom: 1px solid var(--fersie-neutral-200, #edf2f7);
-}
-
-.fersie-values-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-}
-
-.fersie-value-card {
-  background-color: var(--fersie-tailoring-cream, #faf8f5);
-  border: 1px solid var(--fersie-neutral-300, #e2e8f0);
-  border-radius: 12px;
-  padding: 2rem;
-  text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.fersie-value-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-  border-color: var(--fersie-gold, #c5a059);
-}
-
-.fersie-value-icon {
-  width: 50px;
-  height: 50px;
-  background-color: var(--fersie-gold-light, #f3e5c8);
-  color: var(--fersie-gold-dark, #8c6e2d);
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.25rem;
-  font-size: 1.25rem;
-  font-weight: 700;
-}
-
-/* Collection Filter Tabs */
+/* Luxury Filter Tabs */
 .fersie-filter-tabs {
   display: flex;
   justify-content: center;
-  gap: 0.75rem;
   flex-wrap: wrap;
-  margin-bottom: 2.5rem;
+  gap: 0.75rem;
+  margin-bottom: 3.5rem;
 }
 
 .fersie-filter-btn {
-  background-color: #ffffff;
-  border: 1px solid var(--fersie-neutral-300, #cbd5e0);
-  color: var(--fersie-neutral-700, #4a5568);
-  padding: 0.5rem 1.25rem;
-  border-radius: 9999px;
-  font-size: 0.9rem;
+  background: #ffffff;
+  border: 1px solid rgba(157, 112, 45, 0.2);
+  color: var(--fersie-neutral-800, #332f2b);
+  padding: 0.65rem 1.6rem;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 .fersie-filter-btn:hover {
-  border-color: var(--fersie-gold, #c5a059);
-  color: var(--fersie-gold, #c5a059);
+  border-color: var(--fersie-gold, #9d702d);
+  color: var(--fersie-gold, #9d702d);
 }
 
 .fersie-filter-btn.active {
-  background-color: var(--fersie-gold, #c5a059);
+  background: linear-gradient(135deg, #785025 0%, #9d702d 50%, #b98435 100%);
   color: #ffffff;
-  border-color: var(--fersie-gold, #c5a059);
-  box-shadow: 0 2px 6px rgba(197, 160, 89, 0.3);
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(157, 112, 45, 0.25);
 }
 
 /* Product Cards Grid */
-.fersie-grid {
+.fersie-products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 2.25rem;
 }
 
-.fersie-product-card {
-  background-color: #ffffff;
-  border: 1px solid var(--fersie-neutral-300, #e2e8f0);
-  border-radius: 12px;
+.fersie-card {
+  background: #ffffff;
+  border-radius: 4px;
   overflow: hidden;
+  border: 1px solid rgba(157, 112, 45, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
   display: flex;
   flex-direction: column;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.fersie-product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  border-color: var(--fersie-gold, #c5a059);
+.fersie-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(66, 43, 34, 0.12);
+  border-color: rgba(157, 112, 45, 0.35);
 }
 
-.fersie-product-img-wrapper {
+.fersie-card-media {
   position: relative;
-  width: 100%;
-  padding-top: 100%; /* 1:1 Aspect Ratio */
-  background-color: #f7f7f7;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
+  background: #f0ebe4;
 }
 
-.fersie-product-img-wrapper img,
-.fersie-product-img-wrapper svg,
-.fersie-product-img,
-.fersie-img {
-  position: absolute;
-  top: 0;
-  left: 0;
+.fersie-card-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.fersie-product-card:hover .fersie-product-img-wrapper img {
-  transform: scale(1.05);
+.fersie-card:hover .fersie-card-media img {
+  transform: scale(1.06);
 }
 
-.fersie-product-badge {
+.fersie-card-badge {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  z-index: 2;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(21, 19, 17, 0.85);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 2px;
+  font-weight: 500;
 }
 
-.fersie-product-info {
+.fersie-card-quickview {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 0.75rem 1rem;
+  text-align: center;
+  transform: translateY(100%);
+  transition: transform 0.35s ease;
+}
+
+.fersie-card:hover .fersie-card-quickview {
+  transform: translateY(0);
+}
+
+.fersie-quickview-btn {
+  background: none;
+  border: none;
+  color: var(--fersie-neutral-900, #1c1c1c);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.fersie-card-body {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
-.fersie-product-code {
-  font-size: 0.75rem;
-  color: var(--fersie-neutral-500, #a0aec0);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.25rem;
-}
-
-.fersie-product-title {
-  font-family: var(--fersie-font-serif, 'Playfair Display', serif);
-  font-size: 1.15rem;
+.fersie-card-sku {
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  color: var(--fersie-gold, #9d702d);
   font-weight: 600;
-  margin: 0 0 0.5rem 0;
-  color: var(--fersie-tailoring-charcoal, #1a202c);
+  margin-bottom: 0.35rem;
 }
 
-.fersie-product-desc {
-  font-size: 0.875rem;
-  color: var(--fersie-neutral-600, #718096);
-  margin-bottom: 1rem;
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.fersie-product-price {
+.fersie-card-title {
+  font-family: 'Playfair Display', serif;
   font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--fersie-gold-dark, #9a762b);
+  line-height: 1.3;
+  margin: 0 0 0.6rem;
+}
+
+.fersie-card-desc {
+  font-size: 0.86rem;
+  color: #666;
+  line-height: 1.5;
   margin-bottom: 1.25rem;
-  margin-top: auto;
+  flex-grow: 1;
 }
 
-.fersie-product-actions {
-  display: flex;
-  gap: 0.5rem;
-  flex-direction: column;
-}
-
-/* Modal Lightbox Viewer */
-dialog.fersie-modal {
-  border: none;
-  padding: 0;
-  background: transparent;
-}
-
-.fersie-modal-content {
-  background-color: #ffffff;
-  border-radius: 16px;
-  max-width: 600px;
-  width: 92%;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-  margin: auto;
-}
-
-.fersie-modal-header {
-  padding: 1.25rem 1.5rem;
-  border-bottom: 1px solid var(--fersie-neutral-200, #edf2f7);
+.fersie-card-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--fersie-tailoring-beige, #faf8f5);
+  padding-top: 1rem;
+  border-top: 1px solid rgba(157, 112, 45, 0.12);
 }
 
-.fersie-modal-body {
-  padding: 1.5rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.fersie-price-tag {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--fersie-neutral-900, #1c1c1c);
+  font-family: 'Playfair Display', serif;
+}
+
+/* --------------------------------------------------------------------------
+   7. Official Instagram Showcase (@fersie.oficial)
+   -------------------------------------------------------------------------- */
+.fersie-instagram-section {
+  padding: 6.5rem 0;
+  background: #ffffff;
+  border-top: 1px solid rgba(157, 112, 45, 0.12);
+}
+
+.fersie-instagram-header-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
   gap: 1.5rem;
 }
 
-@media (max-width: 580px) {
-  .fersie-modal-body {
-    grid-template-columns: 1fr;
-  }
+.fersie-insta-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
 }
 
-.fersie-modal-img {
+.fersie-insta-avatar-wrap {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  padding: 2.5px;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fersie-insta-avatar-wrap img {
   width: 100%;
-  border-radius: 8px;
+  height: 100%;
+  border-radius: 50%;
   object-fit: cover;
-  aspect-ratio: 1/1;
-  background-color: #f0f0f0;
+  border: 2px solid #ffffff;
+}
+
+.fersie-insta-info h3 {
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.fersie-insta-info h3 a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s;
+}
+
+.fersie-insta-info h3 a:hover {
+  color: var(--fersie-gold, #9d702d);
+}
+
+.fersie-insta-info p {
+  margin: 0.25rem 0 0;
+  font-size: 0.86rem;
+  color: #666;
+}
+
+.fersie-instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.fersie-insta-post {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.fersie-insta-post img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.fersie-insta-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(21, 19, 17, 0.72);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  color: #ffffff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-decoration: none;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.fersie-insta-post:hover .fersie-insta-overlay {
+  opacity: 1;
+}
+
+.fersie-insta-post:hover img {
+  transform: scale(1.08);
+}
+
+.fersie-insta-overlay-icon {
+  font-size: 1.5rem;
+}
+
+.fersie-insta-overlay-text {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.fersie-insta-overlay-caption {
+  font-size: 0.78rem;
+  opacity: 0.85;
+  line-height: 1.4;
+  margin-top: 0.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   8. VIP Concierge WhatsApp Section
+   -------------------------------------------------------------------------- */
+.fersie-concierge-section {
+  padding: 6.5rem 0;
+  background: #181513;
+  color: #fbf9f5;
+  position: relative;
+  overflow: hidden;
+}
+
+.fersie-concierge-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(157, 112, 45, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.fersie-concierge-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.fersie-concierge-content h2 {
+  color: #ffffff;
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+  margin-bottom: 1.25rem;
+}
+
+.fersie-concierge-content p {
+  color: #ded7ce;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 580px;
+}
+
+.fersie-concierge-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.fersie-concierge-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.fersie-concierge-feature span {
+  color: var(--fersie-gold-light, #b98435);
+  font-size: 1.25rem;
+}
+
+.fersie-concierge-feature h5 {
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+.fersie-concierge-feature p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #aba195;
+  line-height: 1.4;
+}
+
+/* --------------------------------------------------------------------------
+   9. Quick View Interactive Modal
+   -------------------------------------------------------------------------- */
+.fersie-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.fersie-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.fersie-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 13, 11, 0.75);
+  backdrop-filter: blur(8px);
+}
+
+.fersie-modal-dialog {
+  position: relative;
+  background: #ffffff;
+  border-radius: 4px;
+  max-width: 880px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid rgba(157, 112, 45, 0.25);
+  transform: scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fersie-modal.active .fersie-modal-dialog {
+  transform: scale(1);
+}
+
+.fersie-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  background: none;
+  border: none;
+  font-size: 1.75rem;
+  color: #888;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.2s;
+}
+
+.fersie-modal-close:hover {
+  color: #1c1c1c;
+}
+
+.fersie-modal-image-wrap {
+  background: #f4ede3;
+  aspect-ratio: 4 / 5;
+}
+
+.fersie-modal-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .fersie-modal-details {
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
-/* Footer */
-.fersie-site-footer {
-  background-color: var(--fersie-tailoring-black, #111111);
-  color: var(--fersie-neutral-400, #cbd5e0);
-  padding: 4rem 0 2rem 0;
-  border-top: 1px solid var(--fersie-neutral-800, #2d3748);
+/* --------------------------------------------------------------------------
+   10. Floating WhatsApp VIP Concierge
+   -------------------------------------------------------------------------- */
+.fersie-floating-wa {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 850;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.4rem;
+  background: linear-gradient(135deg, #785025 0%, #9d702d 50%, #b98435 100%);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 0.84rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  box-shadow: 0 8px 30px rgba(157, 112, 45, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fersie-floating-wa:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(157, 112, 45, 0.5);
+  color: #ffffff;
+}
+
+.fersie-floating-wa::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50px;
+  border: 1.5px solid var(--fersie-gold-light, #b98435);
+  opacity: 0.6;
+  animation: waPulse 2.4s infinite;
+}
+
+@keyframes waPulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.08); opacity: 0; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+/* --------------------------------------------------------------------------
+   11. High-Fashion Footer
+   -------------------------------------------------------------------------- */
+.fersie-footer {
+  background: #110f0e;
+  color: #cac0b2;
+  padding: 5rem 0 2.5rem;
+  border-top: 1px solid rgba(157, 112, 45, 0.2);
 }
 
 .fersie-footer-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2.5rem;
-  margin-bottom: 3rem;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: 3.5rem;
+  margin-bottom: 4rem;
 }
 
 .fersie-footer-brand h3 {
-  font-family: var(--fersie-font-serif, 'Playfair Display', serif);
   color: #ffffff;
-  font-size: 1.5rem;
-  margin-top: 0;
-}
-
-.fersie-footer-links h4 {
-  color: #ffffff;
-  font-size: 1rem;
-  margin-top: 0;
+  font-size: 1.8rem;
   margin-bottom: 1rem;
 }
 
-.fersie-footer-links ul {
+.fersie-footer-brand p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  max-width: 360px;
+}
+
+.fersie-footer-col h4 {
+  color: #ffffff;
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.fersie-footer-col ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-.fersie-footer-links ul li {
-  margin-bottom: 0.5rem;
-}
-
-.fersie-footer-links ul a {
-  color: var(--fersie-neutral-400, #cbd5e0);
+.fersie-footer-col ul a {
+  color: #aba195;
   text-decoration: none;
-  transition: color 0.2s ease;
+  font-size: 0.88rem;
+  transition: color 0.2s;
 }
 
-.fersie-footer-links ul a:hover {
-  color: var(--fersie-gold, #c5a059);
+.fersie-footer-col ul a:hover {
+  color: var(--fersie-gold-light, #b98435);
 }
 
 .fersie-footer-bottom {
-  text-align: center;
   padding-top: 2rem;
-  border-top: 1px solid var(--fersie-neutral-800, #2d3748);
-  font-size: 0.875rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  color: #888;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-/* Responsive Media Queries */
+/* --------------------------------------------------------------------------
+   12. Responsive Breakpoints
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .fersie-hero-grid,
+  .fersie-manifesto-grid,
+  .fersie-concierge-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .fersie-instagram-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .fersie-footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+}
+
 @media (max-width: 768px) {
-  .fersie-nav-links,
-  .fersie-header-actions .fersie-wa-cta {
+  .fersie-nav-links {
     display: none;
   }
 
@@ -545,11 +1256,34 @@ dialog.fersie-modal {
     display: flex;
   }
 
-  .fersie-hero h1 {
-    font-size: 2rem;
+  .fersie-modal-dialog {
+    grid-template-columns: 1fr;
   }
 
-  .fersie-hero {
-    padding: 3.5rem 0;
+  .fersie-modal-image-wrap {
+    aspect-ratio: 1 / 1;
+  }
+
+  .fersie-pillars-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fersie-hero-badge-floating {
+    position: static;
+    margin-top: 1.5rem;
+    max-width: 100%;
+  }
+
+  .fersie-floating-wa span {
+    display: none;
+  }
+
+  .fersie-floating-wa {
+    padding: 0.85rem;
+    border-radius: 50%;
+  }
+
+  .fersie-footer-grid {
+    grid-template-columns: 1fr;
   }
 }

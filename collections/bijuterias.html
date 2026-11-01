@@ -3,31 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coleção Bijuterias Finas & Joias — Fersie</title>
-  <!-- Design System CSS Integration -->
-  <link rel="stylesheet" href="../../fersie-design-system/dist/fersie-design-system.min.css">
-  <link rel="stylesheet" href="../css/fersie-design-system.css">
+  <title>Joias &amp; Bijuterias Finas — FERSIÊ High Jewelry</title>
+  <meta name="description" content="Joalheria autoral e bijuterias finas FERSIÊ: Colares geométricos, brincos orgânicos e anéis com banho de ouro 18k e pedras selecionadas.">
+  <link rel="icon" type="image/png" href="../images/emblema_fersie_redondo.png">
+
+  <!-- Google Fonts Preconnect & Luxury Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Design System & Site CSS -->
+  <link rel="stylesheet" href="../css/fersie-design-system.min.css">
   <link rel="stylesheet" href="../css/site.css">
 </head>
-<body class="fersie-text-body">
+<body>
 
-  <!-- Header -->
+  <!-- Top Scroll Progress Indicator -->
+  <div class="fersie-scroll-progress" aria-hidden="true"></div>
+
+  <!-- Announcement Luxury Bar -->
+  <aside class="fersie-top-bar" aria-label="Avisos Oficiais">
+    <span>✦ Ateliê de Alfaiataria Nobre &amp; Joalheria Autoral</span>
+    <span>•</span>
+    <span><a href="https://www.instagram.com/fersie.oficial/" target="_blank" rel="noopener">Instagram @fersie.oficial (+8.7k)</a></span>
+  </aside>
+
+  <!-- Sticky Header -->
   <header class="fersie-site-header">
     <div class="fersie-container">
       <nav class="fersie-nav" aria-label="Navegação Principal">
-        <a href="../index.html" class="fersie-logo fersie-heading-lg">FERSIE</a>
         
+        <a href="../index.html" class="fersie-brand-link">
+          <img src="../images/logo_fersie_transparente.png" alt="FERSIÊ Logo" class="fersie-brand-logo-img" onerror="this.style.display='none'">
+          <span class="fersie-brand-wordmark">FERSIÊ</span>
+        </a>
+
         <ul class="fersie-nav-links">
           <li><a href="../index.html">Início</a></li>
+          <li><a href="../index.html#manifesto">Manifesto</a></li>
           <li><a href="alfaiataria.html">Alfaiataria</a></li>
-          <li><a href="bijuterias.html" class="active">Bijuterias Finas</a></li>
-          <li><a href="colecoes.html">Coleções</a></li>
+          <li><a href="bijuterias.html" class="active">Joias Finas</a></li>
+          <li><a href="../index.html#instagram">Instagram</a></li>
         </ul>
 
         <div class="fersie-header-actions">
-          <a href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Gostaria%20de%20atendimento%20para%20a%20cole%C3%A7%C3%A3o%20de%20Bijuterias%20Finas%20Fersie." target="_blank" rel="noopener" class="fersie-btn fersie-btn-gold fersie-wa-cta">Atendimento WhatsApp</a>
-          
-          <button type="button" class="fersie-menu-toggle" id="menu-toggle-btn" aria-label="Abrir Menu" aria-expanded="false" aria-controls="nav-drawer">
+          <a href="https://wa.me/5543988597348?text=Ol%C3%A1%20FERSI%C3%8A%21%20Gostaria%20de%20consultoria%20sobre%20as%20Joias%20Autorais." 
+             target="_blank" rel="noopener" 
+             class="fersie-btn-luxury fersie-btn-gold">
+            <span>Ateliê WhatsApp</span>
+          </a>
+
+          <button type="button" class="fersie-menu-toggle" id="menu-toggle-btn" aria-label="Abrir Menu">
             <span></span>
             <span></span>
             <span></span>
@@ -37,157 +63,178 @@
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
-  <div id="nav-drawer" class="fersie-drawer" aria-hidden="true">
-    <div class="fersie-drawer-overlay" id="drawer-overlay"></div>
-    <div class="fersie-drawer-content">
-      <button type="button" class="fersie-drawer-close" id="drawer-close-btn" aria-label="Fechar Menu">&times;</button>
-      <h3 class="fersie-heading-md">FERSIE</h3>
-      <p class="fersie-text-muted">Bijuterias Finas</p>
-      <ul>
-        <li><a href="../index.html">Início</a></li>
-        <li><a href="alfaiataria.html">Alfaiataria</a></li>
-        <li><a href="bijuterias.html">Bijuterias Finas</a></li>
-        <li><a href="colecoes.html">Coleções Exclusivas</a></li>
-      </ul>
-      <div style="margin-top: auto; padding-top: 1rem;">
-        <a href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Gostaria%20de%20atendimento%20para%20acess%C3%B3rios." target="_blank" class="fersie-btn fersie-btn-primary" style="width: 100%;">Atendimento WhatsApp</a>
-      </div>
-    </div>
-  </div>
-
   <main>
-    <!-- Collection Banner -->
-    <section class="fersie-hero" style="padding: 3.5rem 0;">
+    <!-- Collection Hero Banner -->
+    <section class="fersie-hero-section" style="min-height: 45vh; padding: 3.5rem 0;">
       <div class="fersie-container">
-        <span class="fersie-hero-badge">Fine Jewelry & Accessories</span>
-        <h1 class="fersie-heading-xl">Bijuterias Finas & Acessórios</h1>
-        <p class="fersie-text-body">Brincos, colares, pulseiras e anéis em banho de ouro 18k e acabamento hipoalergênico refinado.</p>
+        <div style="max-width: 760px;" class="fersie-reveal">
+          <span class="fersie-tag-pill">✦ Joalheria Autoral &amp; Acessórios</span>
+          <h1 class="fersie-hero-title">Metais Nobres &amp; <em>Formas Esculturais</em></h1>
+          <p class="fersie-hero-description">
+            Joias com alma, desenhadas para dialogar com decotes e blazers de alta alfaiataria. Banho de ouro 18k hipoalergênico, linhas orgânicas e pedras naturais selecionadas.
+          </p>
+        </div>
       </div>
     </section>
 
     <!-- Product Grid -->
-    <section class="fersie-section">
+    <section class="fersie-collections-section">
       <div class="fersie-container">
-        <div class="fersie-grid" id="products-container">
-          
-          <!-- Product 1 -->
-          <article class="fersie-product-card" data-category="bijuterias">
-            <div class="fersie-product-img-wrapper">
-              <span class="fersie-badge fersie-badge-warning fersie-product-badge">Bijuterias Finas</span>
-              <img src="../images/lookbook2.svg" alt="Colar Gravatinha Ouro 18k" class="fersie-product-img fersie-img">
+        
+        <div class="fersie-products-grid">
+
+          <!-- Item 1: Colar Tríade -->
+          <article class="fersie-card fersie-reveal" data-category="joias">
+            <div class="fersie-card-media">
+              <span class="fersie-card-badge">Ouro 18k</span>
+              <img src="../images/acessorios_01.jpg" alt="Colar Tríade com Elos Nobres FERSIÊ" loading="lazy">
+              <div class="fersie-card-quickview">
+                <button type="button" class="fersie-quickview-btn btn-preview-modal"
+                        data-title="Colar Tríade com Elos Nobres"
+                        data-category="Joias & Bijuterias"
+                        data-price="R$ 229,00"
+                        data-code="FER-JIA-305"
+                        data-img="../images/acessorios_01.jpg"
+                        data-desc="Design autoral com elos assimétricos entrelaçados, banho espesso de ouro 18k e verniz protetor hipoalergênico. Uma joia marcante com alma.">
+                  ✦ Ver Detalhes
+                </button>
+              </div>
             </div>
-            <div class="fersie-product-info">
-              <span class="fersie-product-code">CÓDIGO: FER-201</span>
-              <h3 class="fersie-product-title">Colar Gravatinha Ouro 18k</h3>
-              <p class="fersie-product-desc">Colar em elos finos banhado a ouro 18k com pendente em cristal multifacetado.</p>
-              <div class="fersie-product-price">R$ 189,90</div>
-              <div class="fersie-product-actions">
-                <button type="button" class="fersie-btn fersie-btn-sm fersie-btn-outline btn-preview-modal" 
-                        data-title="Colar Gravatinha Ouro 18k" 
-                        data-category="Bijuterias Finas" 
-                        data-price="R$ 189,90" 
-                        data-img="../images/lookbook2.svg" 
-                        data-code="FER-201"
-                        data-desc="Banho triplo de ouro 18k e verniz protetor contra oxidação.">Ver Detalhes</button>
-                <a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20o%20Colar%20Gravatinha%20Ouro%2018k%20%28C%C3%B3digo%3A%20FER-201%29." 
-                   target="_blank" rel="noopener" 
-                   class="fersie-btn fersie-btn-sm fersie-btn-gold fersie-wa-product-cta"
-                   data-wa-product="Colar Gravatinha Ouro 18k" 
-                   data-wa-price="189.90" 
-                   data-wa-code="FER-201">Comprar via WhatsApp</a>
+            <div class="fersie-card-body">
+              <span class="fersie-card-sku">REF: FER-JIA-305</span>
+              <h3 class="fersie-card-title">Colar Tríade Elos Nobres</h3>
+              <p class="fersie-card-desc">Elos esculturais banhados a ouro 18k com acabamento acetinado de luxo.</p>
+              <div class="fersie-card-footer">
+                <span class="fersie-price-tag">R$ 229,00</span>
+                <a href="https://wa.me/5543988597348?text=Ol%C3%A1%20FERSI%C3%8A%21%20Gostaria%20do%20Colar%20Tr%C3%ADade%20%28Ref%3A%20FER-JIA-305%29." target="_blank" rel="noopener" class="fersie-btn-luxury fersie-btn-gold" style="padding:0.5rem 1rem; font-size:0.75rem;">Comprar</a>
               </div>
             </div>
           </article>
 
-          <!-- Product 2 -->
-          <article class="fersie-product-card" data-category="bijuterias">
-            <div class="fersie-product-img-wrapper">
-              <span class="fersie-badge fersie-badge-warning fersie-product-badge">Bijuterias Finas</span>
-              <img src="../images/lookbook2.svg" alt="Brinco Argola Orgânica Banhada a Ouro" class="fersie-product-img fersie-img">
+          <!-- Item 2: Brinco Orgânico Gota -->
+          <article class="fersie-card fersie-reveal" data-category="joias">
+            <div class="fersie-card-media">
+              <span class="fersie-card-badge">Design Autoral</span>
+              <img src="../images/editorial_bijuterias_01.jpg" alt="Brinco Orgânico Gota Ouro 18k FERSIÊ" loading="lazy">
+              <div class="fersie-card-quickview">
+                <button type="button" class="fersie-quickview-btn btn-preview-modal"
+                        data-title="Brinco Orgânico Gota em Ouro 18k"
+                        data-category="Joias & Bijuterias"
+                        data-price="R$ 159,00"
+                        data-code="FER-BRI-202"
+                        data-img="../images/editorial_bijuterias_01.jpg"
+                        data-desc="Silhueta orgânica inspirada nas curvas da natureza. Peça ultra leve e confortável com tarraxa ergonômica.">
+                  ✦ Ver Detalhes
+                </button>
+              </div>
             </div>
-            <div class="fersie-product-info">
-              <span class="fersie-product-code">CÓDIGO: FER-202</span>
-              <h3 class="fersie-product-title">Brinco Argola Orgânica Gold</h3>
-              <p class="fersie-product-desc">Argolas com textura fluida e design orgânico martelado à mão.</p>
-              <div class="fersie-product-price">R$ 129,90</div>
-              <div class="fersie-product-actions">
-                <button type="button" class="fersie-btn fersie-btn-sm fersie-btn-outline btn-preview-modal" 
-                        data-title="Brinco Argola Orgânica Gold" 
-                        data-category="Bijuterias Finas" 
-                        data-price="R$ 129,90" 
-                        data-img="../images/lookbook2.svg" 
-                        data-code="FER-202"
-                        data-desc="Leveza e impacto visual. Fecho italiano de alta segurança.">Ver Detalhes</button>
-                <a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20o%20Brinco%20Argola%20Org%C3%A2nica%20Gold%20%28C%C3%B3digo%3A%20FER-202%29." 
-                   target="_blank" rel="noopener" 
-                   class="fersie-btn fersie-btn-sm fersie-btn-gold fersie-wa-product-cta"
-                   data-wa-product="Brinco Argola Orgânica Gold" 
-                   data-wa-price="129.90" 
-                   data-wa-code="FER-202">Comprar via WhatsApp</a>
+            <div class="fersie-card-body">
+              <span class="fersie-card-sku">REF: FER-BRI-202</span>
+              <h3 class="fersie-card-title">Brinco Orgânico Gota Ouro</h3>
+              <p class="fersie-card-desc">Linhas puras e design contemporâneo de presença marcante.</p>
+              <div class="fersie-card-footer">
+                <span class="fersie-price-tag">R$ 159,00</span>
+                <a href="https://wa.me/5543988597348?text=Ol%C3%A1%20FERSI%C3%8A%21%20Gostaria%20do%20Brinco%20Org%C3%A2nico%20%28Ref%3A%20FER-BRI-202%29." target="_blank" rel="noopener" class="fersie-btn-luxury fersie-btn-gold" style="padding:0.5rem 1rem; font-size:0.75rem;">Comprar</a>
               </div>
             </div>
           </article>
 
-          <!-- Product 3 -->
-          <article class="fersie-product-card" data-category="bijuterias">
-            <div class="fersie-product-img-wrapper">
-              <span class="fersie-badge fersie-badge-warning fersie-product-badge">Bijuterias Finas</span>
-              <img src="../images/lookbook2.svg" alt="Pulseira Elos Banhada a Ouro" class="fersie-product-img fersie-img">
+          <!-- Item 3: Choker Geométrica -->
+          <article class="fersie-card fersie-reveal" data-category="joias">
+            <div class="fersie-card-media">
+              <span class="fersie-card-badge">Alta Joalheria</span>
+              <img src="../images/editorial_bijuterias_02.jpg" alt="Choker Geométrica Ouro Nobre FERSIÊ" loading="lazy">
+              <div class="fersie-card-quickview">
+                <button type="button" class="fersie-quickview-btn btn-preview-modal"
+                        data-title="Choker Geométrica em Ouro Nobre"
+                        data-category="Joias & Bijuterias"
+                        data-price="R$ 210,00"
+                        data-code="FER-CHK-412"
+                        data-img="../images/editorial_bijuterias_02.jpg"
+                        data-desc="Gargantilha rígida com flexibilidade anatômica, banho de 10 milésimos de ouro 18k e fechamento magnético invisível.">
+                  ✦ Ver Detalhes
+                </button>
+              </div>
             </div>
-            <div class="fersie-product-info">
-              <span class="fersie-product-code">CÓDIGO: FER-203</span>
-              <h3 class="fersie-product-title">Pulseira Elos Entrelaçados Gold</h3>
-              <p class="fersie-product-desc">Pulseira em correntaria pesada banhada a ouro com fecho boia exclusivo.</p>
-              <div class="fersie-product-price">R$ 165,00</div>
-              <div class="fersie-product-actions">
-                <button type="button" class="fersie-btn fersie-btn-sm fersie-btn-outline btn-preview-modal" 
-                        data-title="Pulseira Elos Entrelaçados Gold" 
-                        data-category="Bijuterias Finas" 
-                        data-price="R$ 165,00" 
-                        data-img="../images/lookbook2.svg" 
-                        data-code="FER-203"
-                        data-desc="Design marcante e atemporal para composição com relógios ou sozinha.">Ver Detalhes</button>
-                <a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20a%20Pulseira%20Elos%20Entrela%C3%A7ados%20Gold%20%28C%C3%B3digo%3A%20FER-203%29." 
-                   target="_blank" rel="noopener" 
-                   class="fersie-btn fersie-btn-sm fersie-btn-gold fersie-wa-product-cta"
-                   data-wa-product="Pulseira Elos Entrelaçados Gold" 
-                   data-wa-price="165.00" 
-                   data-wa-code="FER-203">Comprar via WhatsApp</a>
+            <div class="fersie-card-body">
+              <span class="fersie-card-sku">REF: FER-CHK-412</span>
+              <h3 class="fersie-card-title">Choker Geométrica Ouro</h3>
+              <p class="fersie-card-desc">Linhas arquitetônicas com toque suave no colo e presença imponente.</p>
+              <div class="fersie-card-footer">
+                <span class="fersie-price-tag">R$ 210,00</span>
+                <a href="https://wa.me/5543988597348?text=Ol%C3%A1%20FERSI%C3%8A%21%20Gostaria%20da%20Choker%20Geom%C3%A9trica%20%28Ref%3A%20FER-CHK-412%29." target="_blank" rel="noopener" class="fersie-btn-luxury fersie-btn-gold" style="padding:0.5rem 1rem; font-size:0.75rem;">Comprar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 4: Cinto Courama Fivela Escultural -->
+          <article class="fersie-card fersie-reveal" data-category="acessorios">
+            <div class="fersie-card-media">
+              <span class="fersie-card-badge">Couro Nobre</span>
+              <img src="../images/cinto_courama_01.jpg" alt="Cinto Courama Fivela Dourada FERSIÊ" loading="lazy">
+              <div class="fersie-card-quickview">
+                <button type="button" class="fersie-quickview-btn btn-preview-modal"
+                        data-title="Cinto Courama com Fivela Escultural"
+                        data-category="Acessórios & Couros"
+                        data-price="R$ 189,90"
+                        data-code="FER-CINTO-01"
+                        data-img="../images/cinto_courama_01.jpg"
+                        data-desc="Confeccionado em couro legítimo texturizado com fivela geométrica exclusiva e passador duplo banhado a ouro.">
+                  ✦ Ver Detalhes
+                </button>
+              </div>
+            </div>
+            <div class="fersie-card-body">
+              <span class="fersie-card-sku">REF: FER-CINTO-01</span>
+              <h3 class="fersie-card-title">Cinto Courama Fivela Escultural</h3>
+              <p class="fersie-card-desc">Couro selecionado com ferragens em banho nobre e durabilidade eterna.</p>
+              <div class="fersie-card-footer">
+                <span class="fersie-price-tag">R$ 189,90</span>
+                <a href="https://wa.me/5543988597348?text=Ol%C3%A1%20FERSI%C3%8A%21%20Gostaria%20do%20Cinto%20Courama%20%28Ref%3A%20FER-CINTO-01%29." target="_blank" rel="noopener" class="fersie-btn-luxury fersie-btn-gold" style="padding:0.5rem 1rem; font-size:0.75rem;">Comprar</a>
               </div>
             </div>
           </article>
 
         </div>
+
       </div>
     </section>
   </main>
 
-  <!-- Modal Dialog -->
-  <dialog id="product-modal" class="fersie-modal">
-    <div class="fersie-modal-content">
-      <div class="fersie-modal-header">
-        <h3 id="modal-title" class="fersie-modal-title">Detalhes do Produto</h3>
-        <button type="button" id="modal-close-btn" class="fersie-modal-close" aria-label="Fechar">&times;</button>
+  <!-- Quick-View Interactive Lightbox Modal -->
+  <div id="product-modal" class="fersie-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="fersie-modal-backdrop" id="modal-backdrop"></div>
+    <div class="fersie-modal-dialog">
+      <button type="button" class="fersie-modal-close" id="modal-close-btn" aria-label="Fechar Modal">&times;</button>
+      
+      <div class="fersie-modal-image-wrap">
+        <img id="modal-img" src="../images/logo_fersie_padrao.png" alt="Visualização do Produto">
       </div>
-      <div class="fersie-modal-body">
-        <img id="modal-img" src="../images/lookbook2.svg" alt="Imagem do produto" class="fersie-modal-img">
-        <div class="fersie-modal-details">
-          <span id="modal-category" class="fersie-badge fersie-badge-warning" style="align-self: flex-start; margin-bottom: 0.5rem;">BIJUTERIAS FINAS</span>
-          <span id="modal-code" class="fersie-text-xs" style="margin-bottom: 0.75rem;">CÓDIGO: FER-000</span>
-          <p id="modal-desc" class="fersie-text-body" style="font-size: 0.95rem; margin-bottom: 1.25rem;">Descrição do produto.</p>
-          <div id="modal-price" class="fersie-product-price" style="font-size: 1.5rem; margin-bottom: 1.25rem;">R$ 0,00</div>
-          <a id="modal-wa-btn" href="https://wa.me/5511999999999" target="_blank" rel="noopener" class="fersie-btn fersie-btn-gold fersie-wa-product-cta" style="width: 100%;">Comprar via WhatsApp</a>
+
+      <div class="fersie-modal-details">
+        <span id="modal-category" style="font-size:0.76rem; letter-spacing:0.14em; color:var(--fersie-gold,#9d702d); font-weight:600; text-transform:uppercase; margin-bottom:0.35rem;">COLEÇÃO</span>
+        <span id="modal-code" style="font-size:0.82rem; color:#888; margin-bottom:0.75rem;">REF: FER-001</span>
+        <h3 id="modal-title" style="font-size:1.65rem; margin-bottom:1rem; font-family:'Playfair Display',serif;">Nome da Peça</h3>
+        <p id="modal-desc" style="font-size:0.95rem; color:#555; line-height:1.7; margin-bottom:1.75rem;">Descrição da peça.</p>
+        
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem; padding:1rem 0; border-top:1px solid #eee; border-bottom:1px solid #eee;">
+          <span style="font-size:0.85rem; color:#666; text-transform:uppercase; letter-spacing:0.08em;">Valor Exclusivo:</span>
+          <span id="modal-price" style="font-size:1.6rem; font-weight:700; color:#1c1c1c; font-family:'Playfair Display',serif;">R$ 0,00</span>
         </div>
+
+        <a id="modal-wa-btn" href="https://wa.me/5543988597348" target="_blank" rel="noopener" class="fersie-btn-luxury fersie-btn-gold" style="width:100%; text-align:center;">
+          ✦ Atendimento &amp; Compra no WhatsApp
+        </a>
       </div>
     </div>
-  </dialog>
+  </div>
 
   <!-- Footer -->
-  <footer class="fersie-site-footer">
+  <footer class="fersie-footer">
     <div class="fersie-container">
       <div class="fersie-footer-bottom">
-        <p class="fersie-text-sm">&copy; 2026 Fersie. Todos os direitos reservados. High Tailoring & Jewelry.</p>
+        <div>&copy; 2026 FERSIÊ. Alta Alfaiataria &amp; Joalheria Autoral. Todos os direitos reservados.</div>
+        <div><a href="https://www.instagram.com/fersie.oficial/" target="_blank" rel="noopener" style="color:#888; text-decoration:none;">Instagram @fersie.oficial</a></div>
       </div>
     </div>
   </footer>
