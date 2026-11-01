@@ -179,8 +179,8 @@ function initProductModal() {
     if (modalPrice) modalPrice.textContent = data.price;
 
     if (modalWaBtn) {
-      const phone = '5543988597348';
-      const text = `Olá FERSIÊ! Gostaria de consultar a disponibilidade da peça "${data.title}" (Ref: ${data.code}) no valor de ${data.price}. Poderiam me atender?`;
+      const phone = '5543991680101';
+      const text = `Olá Sibele! Gostaria de consultar a disponibilidade da peça "${data.title}" (Ref: ${data.code}) no valor de ${data.price}. Poderia me atender?`;
       modalWaBtn.href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
     }
 
@@ -267,10 +267,10 @@ function initParallaxEffects() {
  * 8. Dynamic WhatsApp Link Builder
  */
 function initWhatsAppLinks() {
-  const phone = '5543988597348';
+  const phone = '5543991680101';
   document.querySelectorAll('.fersie-wa-direct').forEach(btn => {
     const context = btn.getAttribute('data-context') || 'Atendimento Geral';
-    const text = `Olá FERSIÊ! Gostaria de falar com o atendimento exclusivo do ateliê sobre: ${context}.`;
+    const text = `Olá Sibele! Gostaria de falar com o atendimento exclusivo do ateliê FERSIÊ sobre: ${context}.`;
     btn.href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
   });
 }
@@ -317,7 +317,7 @@ async function initDynamicProductsFromApp() {
             <h3 class="fersie-card-title"><a href="javascript:void(0)" class="btn-preview-modal" data-title="${prod.name}" data-price="${priceFormatted}" data-img="${imgUrl}" data-code="${prod.code}">${prod.name}</a></h3>
             <div class="fersie-card-price">${priceFormatted}</div>
             <div class="fersie-card-actions">
-              <a href="https://wa.me/5543988597348?text=${waMsg}" target="_blank" rel="noopener" class="fersie-card-btn">
+              <a href="https://wa.me/5543991680101?text=${waMsg}" target="_blank" rel="noopener" class="fersie-card-btn">
                 Consultar Ateliê
               </a>
             </div>
