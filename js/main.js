@@ -53,24 +53,24 @@ function initScrollObserver() {
   const revealElements = document.querySelectorAll('.fersie-reveal');
   if (!revealElements.length) return;
 
+  // Ensure all elements are immediately visible
+  revealElements.forEach(el => el.classList.add('active', 'is-visible'));
+
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('active');
+          entry.target.classList.add('active', 'is-visible');
           obs.unobserve(entry.target);
         }
       });
     }, {
       root: null,
-      threshold: 0.12,
-      rootMargin: '0px 0px -40px 0px'
+      threshold: 0.05,
+      rootMargin: '50px'
     });
 
     revealElements.forEach(el => observer.observe(el));
-  } else {
-    // Immediate fallback
-    revealElements.forEach(el => el.classList.add('active'));
   }
 }
 

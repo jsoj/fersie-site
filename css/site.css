@@ -1143,19 +1143,18 @@ h1, h2, h3, h4, .fersie-serif {
 }
 
 /* --------------------------------------------------------------------------
-   10. Scroll Animations (Lightweight, Silky, High Performance)
+   10. Scroll Animations & Reveal States (Always 100% Visible by Default)
    -------------------------------------------------------------------------- */
 .fersie-reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .fersie-reveal.is-visible,
 .fersie-reveal.active {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 /* --------------------------------------------------------------------------
