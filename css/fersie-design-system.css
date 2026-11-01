@@ -402,11 +402,9 @@
 
 .fersie-card-glass,
 .fersie-card-glassmorphic {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: var(--fersie-shadow-glass);
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(157, 112, 45, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .fersie-card-standard {
@@ -548,9 +546,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.65);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -584,9 +580,7 @@ dialog.fersie-modal {
 }
 
 dialog.fersie-modal::backdrop {
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.65);
 }
 
 .fersie-modal-header {
